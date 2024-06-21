@@ -165,3 +165,56 @@ batafsil ma'lumot: https://laravel.com/docs/11.x/blade#main-content
 Laravel layoutlari. Bir xil bo'limlarni layout yani qoliplarga ajratib ishlatish. Bu bizga saytni ummumiy bo'ladigan head header footer kabi qismlarini ummumiy qilib uni ichiga kontentlarni qismini dinamik qilib foydalaish imkonini beradi.
 Ishlatish uchun ummimiy fayl ajratib olinib uni dinamik qismi uchun joyni `@yield(name)` ko'rinishida yozamiz. Keyin uni kerakli joyida chaqirib `@extension(fileNameWithPath)` `@section('yiledIchidagiNom')` ichida buni o'zgaruvchi qismi e'lon qilinadi.`@endsection`
 
+# 9-dars
+Maketlar bilan ishalsh. Laravelda contentni ichini ham yanada kichik maketlarga bo'lib ishlatishimiz mumkin. Bun uchun kerakli faylni ochib uni maketini nomlab ularni chaqirishda `@include(section.slider)` shaklida ichida ko'rsatiladi.
+
+# 10-dars
+Komponentlar bilan ishlash. Bular maketlar kabi bo'lib uni farqli ravishda ichini taxrirlash. Qayta qayta ishlatish ichini dinamik qilish uchun foydalanish mumkin. Uni ishlatish uchun `php artisan make:component componentName` - orqali ishlatiladi. So'ng uni ichiga parametr kiritib o'zgartirishimiz mumkin. Buni biz komponent yasaganimizda avtomat tarizda `app/View/Components` papkasida va `resources/views/components` ichida kerakli komponent ochiladi uni ishlatishda `<x-nameComponent/>` - ko'rinishida ishlatiladi uni ichiga qiymat berish va foydalanish uchun `app/View/Components` ichidagi komponent fayilini
+```
+<?php
+
+namespace App\View\Components;
+
+use Illuminate\View\Component;
+
+class Button extends Component
+{
+    /**
+     * Create a new component instance.
+     *
+     * @return void
+     */
+
+    public $type;
+    public $text;
+    public function __construct($type, $text)
+    {
+        //
+        $this->type = $type;
+        $this->text=$text;
+    }
+
+    /**
+     * Get the view / contents that represent the component.
+     *
+     * @return \Illuminate\Contracts\View\View|\Closure|string
+     */
+    public function render()
+    {
+        return view('components.button');
+    }
+}
+```
+ichidagi maydonarni ishlatish uchun uni chaqirganda 
+```
+<x-button type='danger' text='Delete'/>
+<x-button type='success' text='Done'/>
+```
+yuborilgan maydonni o'qish uchun `resources/views/components` ichidagi komponent ichida
+```
+<div>
+    <!-- When there is no desire, all things are at peace. - Laozi -->
+    <button class="btn btn-{{$type}}">{{$text}}</button>
+</div>
+```
+ko'rinishida ishlatiladi.
