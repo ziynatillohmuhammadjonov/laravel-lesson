@@ -21,7 +21,12 @@
         <label for="sername">Familiyangizni kiriting: </label><br>
         <input type="text" name="sername" id="sername"><br>
         <button type="submit">Yuborish.</button>
-
+        @php
+            
+        @endphp
+        @foreach ($users as $user)
+            <li>{{$user}}</li>
+        @endforeach
     </form>
 </body>
 

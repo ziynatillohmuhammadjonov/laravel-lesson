@@ -6,6 +6,6 @@
     <title>Admin / checkotus</title>
 </head>
 <body>
-    <h1>Admin checkous</h1>
+    <h1>Admin checkouts</h1>
 </body>
 </html>

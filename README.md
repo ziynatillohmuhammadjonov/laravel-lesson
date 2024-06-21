@@ -148,3 +148,20 @@ Bundan tashqari post so'rovi bilan ishlayotganda dastlab xavsizlik yuzasidan
 ?php echo csrf_field();?>
 ``` 
 ni form ichiga yozib olishimiz kerak. Aks holda laravel xatolik beradi.
+
+# 7-dars
+Laravel blade. Bu bizga HTML ichida php kodlarini qo'shimcha <?php ?> larsiz ishlatish mumkin. Faqat buning uchun blade kengaytmasini yozish kerak hamma fayllarga. `fileName.bade.php` tartibida ishlatilishi:
+```
+    @php
+            
+    @endphp
+    @foreach ($users as $user)
+        <li>{{$user}}</li>
+    @endforeach
+```
+batafsil ma'lumot: https://laravel.com/docs/11.x/blade#main-content
+
+# 8-dars
+Laravel layoutlari. Bir xil bo'limlarni layout yani qoliplarga ajratib ishlatish. Bu bizga saytni ummumiy bo'ladigan head header footer kabi qismlarini ummumiy qilib uni ichiga kontentlarni qismini dinamik qilib foydalaish imkonini beradi.
+Ishlatish uchun ummimiy fayl ajratib olinib uni dinamik qismi uchun joyni `@yield(name)` ko'rinishida yozamiz. Keyin uni kerakli joyida chaqirib `@extension(fileNameWithPath)` `@section('yiledIchidagiNom')` ichida buni o'zgaruvchi qismi e'lon qilinadi.`@endsection`
+

@@ -16,6 +16,9 @@ use App\Http\Controllers\SiteController;
 
 Route::get('/', [SiteController::class,'index'])->name('home');
 Route::get('/users', [SiteController::class,'users'])->name('users');
+Route::get('/home', [SiteController::class,'home'])->name('home');
+Route::get('/about', [SiteController::class,'about'])->name('about');
 Route::get('/message/create', [SiteController::class,'create'])->name('create');
 Route::post('/message/store', [SiteController::class,'store'])->name('store');
+
 
