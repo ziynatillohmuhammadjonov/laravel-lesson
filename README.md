@@ -218,3 +218,41 @@ yuborilgan maydonni o'qish uchun `resources/views/components` ichidagi komponent
 </div>
 ```
 ko'rinishida ishlatiladi.
+
+# 11-dars
+Agar komponentlarni ichiga php parametrlarin beradigan bo'lsak uni berish uchun:
+```
+    <x-select :regions="$regions" />// ko'rinishida bo'ladi bunda birinchi klass ichidagi qabul qilinadigan maydon nomi. Ikkinchisi esa berialdigan php parametr noi
+```
+Bundan tashqari komponentlarni ishlatayotganda uni chaqirganda `{{$attributes}}` ko'rinishini qo'shib qo'ysak tashqi barcha attributlarini o'zi avtomatik ravishda qo'yadi.
+```
+<div>
+    <!-- An unexamined life is not worth living. - Socrates -->
+    <select {{$attributes}}>
+        @foreach ($regions as $region)
+            <option value="">{{$region}}</option>
+        @endforeach
+    </select>
+</div>
+```
+- Slotlar - bu bir komponentani ichida bir qancha o'rinda ini ichga ma'lumotlarni qo'yish imkonini beradigan joy xususiyat bo'lib u bitta bo'lsa shunchaki agar ko'p bo'lsa har birini nomlab uni chaqiriladi.
+```
+<x-alert>
+        <x-slot name='title'>
+            Title
+        </x-slot>
+        <x-slot name='description'>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores cum, iste quis reprehenderit suscipit porro
+            sit tenetur id eum. Dolorem.
+        </x-slot>
+</x-alert>
+```
+views ichida 
+```
+<div class="alert alert-success">
+    <!-- Order your soul. Reduce your wants. - Augustine -->
+    <h1>{{$title}}</h1>
+    <p>{{$description}}</p>
+</div>
+``` 
+ko'rinishida ishlatiladi.

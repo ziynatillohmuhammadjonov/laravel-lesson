@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
-<body>
+<body class="container">
     <header>
         <h1>Bu qisim header qismi</h1>
     </header>

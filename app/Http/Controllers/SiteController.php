@@ -16,7 +16,8 @@ class SiteController extends Controller
     }
 
     public function components(){
-        return view("components");
+        $regions =['Tashkent', 'Fargona', 'Andijon'];
+        return view("components", compact('regions'));
     }
     //
     public function index(){
