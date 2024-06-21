@@ -1,4 +1,3 @@
-<
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -131,11 +130,5 @@
             </div>
         </div> -->
         <h1>Home route</h1>
-        <!-- <a href="<?php echo route('user')?>">Users sahifasi</a> -->
-        <!-- <a href="<?php echo route('user', 15)?>">Users sahifasi</a>  -->
-        <!-- Agar argument bitta bo'lsa oddiy ko'rinishda agar ko'p bo'lsa ass. array ko'rinishida beriladi. -->
-        <a href="<?php echo route('users', ['id'=>15, 'name'=>'Alex'])?>">Users sahifasi</a> 
-        <a href="<?php echo route('admin.users')?>">Admin users</a>
-
     </body>
 </html>
