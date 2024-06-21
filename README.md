@@ -1,64 +1,86 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# 1-dars
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Routelar bilan ishlashda uni ichiga dinakik qismini berib yuborish argument deyiladi. Bunda uni 
+```
+Route::get('/test/{id}/name/{name?}', function ($id, $name=null) {
+    return view('test', compact('id','name'));
+});
+```
+orqali qilamiz. Bunda uni ixtiyoriy qilishimiz va un ibir nechta berishimiz mumkin. Olayotganda qiymatlarni uni ketma ketlik bo'yicha oladi nom bo'yciha emas.
 
-## About Laravel
+# 2-dars
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Routerlarga nom berish va u orqali unga murojaat qilish.
+Bu orali biz routlarni ishashga qulay tarizda nomlab uni `route(name)` - laravel funksiyasi orqali ishlatishimiz mumkin.
+```
+Route::get('/users', function () {
+    return 'Users routesi';
+})->name('users')
+```
+Ishlatish:
+```
+<a href="<?php echo route('users')?>">Users sahifasi</a>
+```
+Agar argumetnli bo'lsa:
+```
+Route::get('/users/id/{id}/name/{name}', function ($id, $name){
+    return view('users', compact('id','name'));
+})->name('users');
+```
+Ishlatish:
+```
+<a href="<?php echo route('users', 15)?>">Users sahifasi</a> 
+<!-- Agar argument bitta bo'lsa oddiy ko'rinishda agar ko'p bo'lsa ass. array ko'rinishida beriladi. -->
+<a href="<?php echo route('users', ['id'=>15, 'name'=>'Alex'])?>">Users sahifasi</a> 
+```
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+# 3-dars 
+Routlarni guruhlash. Bu orqali routlarni prefix ya'ni boshlanish qismini ummumiy qilib uni ummumiy qilib o'zgartisak bo'ladi.
+```
+Route::prefix('site')->group(function () {
+    Route::get('/post', function(){
+        return '/site/post - routeri';
+    })->name('post');
+    Route::get('/students', function () {
+        return '/site/students - routeri';
+    })->name('students');
+});
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Route::prefix('admin')->group(function () {
+    Route::get('/users', function(){
+        return '/admin/users - routeri';
+    })->name('admin.users');
 
-## Learning Laravel
+    Route::get('/checkotus', function(){
+        return '/admin/checkouts - routeri';
+    })->name('admin.checkouts');
+});
+```
+Yoki bo'lmasa `name` ni ham ummumiy qilish uchun:
+```
+Route::prefix('site')->name('site.')->group(function () {
+    Route::get('/post', function(){
+        return '/post - routeri';
+    })->name('post');
+    Route::get('/students', function () {
+        return '/students - routeri';
+    })->name('students');
+});
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('/users', function(){
+        return '/users - routeri';
+    })->name('users');
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+    Route::get('/checkotus', function(){
+        return '/checkouts - routeri';
+    })->name('checkouts');
+});
+```
+Foydalanishi:
+```
+ <a href="<?php echo route('admin.users')?>">Admin users</a>
+```
 
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+# 4-dars
+Redayrekt qilish.

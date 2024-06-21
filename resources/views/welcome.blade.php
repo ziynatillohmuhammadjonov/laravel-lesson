@@ -1,3 +1,4 @@
+<
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -21,7 +22,7 @@
         </style>
     </head>
     <body class="antialiased">
-        <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
+        <!-- <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
 
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
@@ -128,6 +129,13 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
+        <h1>Home route</h1>
+        <!-- <a href="<?php echo route('user')?>">Users sahifasi</a> -->
+        <!-- <a href="<?php echo route('user', 15)?>">Users sahifasi</a>  -->
+        <!-- Agar argument bitta bo'lsa oddiy ko'rinishda agar ko'p bo'lsa ass. array ko'rinishida beriladi. -->
+        <a href="<?php echo route('users', ['id'=>15, 'name'=>'Alex'])?>">Users sahifasi</a> 
+        <a href="<?php echo route('admin.users')?>">Admin users</a>
+
     </body>
 </html>
