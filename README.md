@@ -324,6 +324,22 @@ class AddPhoneColumnToStudentsTable extends Migration
 # 16-dars
 Modified column - ustunlarni nomini o'zgartirish. - https://laravel.com/docs/11.x/migrations#column-modifiers
 
+
+# 17-dars
+Eloquent ORM - ma'lumotlar bazasida ishlash.
+Bunda biz ishlashda dastlab modelni har bir javal uchun jadvalni BIRLIK nomiga mos ravishda yasab olamiz. Sababi shunda model nomi jadval nomini birlik shakliga to'g'ri kelsa laravel avtomat shakldi uni bo'glaydi. Aks holda model ichida uni `protected $table = tableNames` ko'rinishida yozish kerak.
+`php artisan make:model TableName`  - ko'pliksiz.
+Uni ichini o'zgartirib istalganicha ishlatish mumkin.  - https://laravel.com/docs/11.x/eloquent
+
+# 18-dars
+Resurs kontroller va routlar (oddiy kontrollerdan resurs kontrollerlarin farqi). Buni ishlatish uchun kontroller ochayotganda `-r` belgisidan foydalaniladi. Bu bizga ochilgan kontroller ichid bira to'la CRUD metodlarin o'zi ochib beradi.
+So'ng uni ishlatish uchun 
+```
+Route::resource('/teachers', TeachersController::class);
+``` 
+ni ichida bersak uni barcha routlarini o'zi tanib oladi.
+
+
  
 
 

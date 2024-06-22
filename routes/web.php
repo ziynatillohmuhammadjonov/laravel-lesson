@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\TeachersControllerRoutes;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SiteController;
+use App\Http\Controllers\TeachersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,4 +25,9 @@ Route::post('/message/store', [SiteController::class,'store'])->name('store');
 
 Route::get('/components', [SiteController::class,'components'])->name('components');
 
+// Route::get('/teachers', [TeachersController::class,'create']);
+// Route::post('/teachers', [TeachersController::class, 'store']);
+
+// Resurs kontrollerni ishlatish uchun
+Route::resource('/teachers', TeachersControllerRoutes::class);
 
