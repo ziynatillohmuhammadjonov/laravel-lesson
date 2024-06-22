@@ -2,7 +2,7 @@
 @section('content')
 <div class="d-flex justify-content-between align-items-center">
     <h1 class="text-center mb-3">O'qituvchilar ro'yxati</h1>
-    <button class="btn btn-primary">Create</button>
+    <a href="{{route('teachers.create')}}" class="btn btn-primary">Create</a>
 </div>
 <table class="table table-bordered">
     <thead>

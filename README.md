@@ -339,6 +339,13 @@ Route::resource('/teachers', TeachersController::class);
 ``` 
 ni ichida bersak uni barcha routlarini o'zi tanib oladi.
 
+# 19-dars
+
+Elqouent ORM bilan ishlashda ma'lumotlarni o'qishda avval ochilga model orqali uni tayyor metodlarda o'qib olishimiz mumkin.
+
+# 20-dars
+Bazaga ma'lumotlarni Elqount ORM dan Model orqali qo'shish. 
+
 
  
 
