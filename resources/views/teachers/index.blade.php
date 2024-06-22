@@ -20,8 +20,8 @@
                 <td>{{$teacher->name}}</td>
                 <td>{{$teacher->scinces}}</td>
                 <td>
-                    <button type="button" class="btn btn-info text-white">View</button>
-                    <button type="button" class="btn btn-primary">Edit</button>
+                    <a href="{{route('teachers.show', $teacher->id)}}" class="btn btn-info text-white">View</a>
+                    <a href="{{route('teachers.edit', $teacher->id)}}" class="btn btn-primary">Edit</a>
                     <button type="button" class="btn btn-danger">Delete</button>
                 </td>
             </tr>

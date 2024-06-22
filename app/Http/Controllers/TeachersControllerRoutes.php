@@ -42,7 +42,7 @@ class TeachersControllerRoutes extends Controller
         // $teacher->scinces = $request->scinces;
         // $teacher->save();
         Teacher::create($request->all());
-        
+
         return redirect()->route('teachers.index')->with('success','');
         
     }
@@ -55,8 +55,9 @@ class TeachersControllerRoutes extends Controller
      */
     public function show($id)
     {
-        //
-    }
+        $teacher = Teacher::findOrFail($id);
+        return view('teachers.show', ['teacher'=>$teacher]);
+    }   
 
     /**
      * Show the form for editing the specified resource.
@@ -66,7 +67,8 @@ class TeachersControllerRoutes extends Controller
      */
     public function edit($id)
     {
-        //
+        $teacher = Teacher::findOrFail($id);
+        return view('teachers.edit', ['teacher'=>$teacher]);
     }
 
     /**
@@ -78,7 +80,9 @@ class TeachersControllerRoutes extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $teacher = Teacher::findOrFail($id);
+        $teacher->update($request->all());
+        return redirect()->route('teachers.index')->with('success','');
     }
 
     /**

@@ -362,12 +362,18 @@ uni yozilishidan qisqaligi bilan:
         
     return redirect()->route('teachers.index')->with('success','');
 ```
-Lekin bundan avval Model ichiga kerakli to'ldiriladigan maydonlarni ko'rsatib qo'yishimiz kerak.
+Lekin bundan avval Model ichiga kerakli to'ldiriladigan maydonlarni ko'rsatib qo'yishimiz kerak. Faqat bu usulda ma'lumot yozilmasa ham uni jo'natib yuborilaveradi. 
 ```
  protected $fillable = ['name', 'scinces'];
 ```
 ko'rinishida.
+Agar istisno xolatlar bo'lsa ya'ni bazaga ma'lumot yozilmaydigan qatorlar bo'lsa uni:
+```
+protected guarded=['columnName']
+```
+ko'rnishida beramiz. Shunda bu ustunga qiymat kiritmaydi.
 
- 
+# 22-dars
+Laravel CRUD update metodi bilan ishlash.
 
 
