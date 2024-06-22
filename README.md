@@ -411,3 +411,6 @@ public function getRouteKeyName(){
 }
 ```
 berib ishlatamiz.
+
+# 25-dars 
+Laravel validation.

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\TeachersControllerRoutes;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SiteController;
@@ -30,4 +31,4 @@ Route::get('/components', [SiteController::class,'components'])->name('component
 
 // Resurs kontrollerni ishlatish uchun
 Route::resource('/teachers', TeachersControllerRoutes::class);
-
+Route::resource('/posts', PostController::class);
