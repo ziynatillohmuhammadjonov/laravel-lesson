@@ -53,9 +53,8 @@ class TeachersControllerRoutes extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Teacher $teacher)
     {
-        $teacher = Teacher::findOrFail($id);
         return view('teachers.show', ['teacher'=>$teacher]);
     }   
 

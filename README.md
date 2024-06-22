@@ -386,5 +386,28 @@ Laravel CRUD delete metodi bilan ishlashda uni biz avval form tegi ichida olishi
 
         return redirect()->route('teachers.index')->with('success','');
 ```
+# 24-dars
+Model binding. Bu usul ma'lumotlarni olishda MO dan ustunlik beradi. 
+Avval 
+```
+  public function show($id)
+    {
+        $teacher = Teacher::findOrFail($id);
+        return view('teachers.show', ['teacher'=>$teacher]);
+    }   
 
-
+```
+bo'lsa uni o'rniga 
+```
+  public function show(Teacher $teacher)
+    {
+        return view('teachers.show', ['teacher'=>$teacher]);
+    }  
+```
+dan foydalnsa bo'ladi. Lekin bunda uni ko'rishda asos qilib id olinadi. Agar biz id o'rniga boshqa qator nomin olmoqchi bo'lsak Model ichiga:
+```
+public function getRouteKeyName(){
+    retutn 'columnName';
+}
+```
+berib ishlatamiz.
