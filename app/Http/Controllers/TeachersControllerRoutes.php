@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Teacher;
 
 class TeachersControllerRoutes extends Controller
 {
@@ -14,6 +15,8 @@ class TeachersControllerRoutes extends Controller
     public function index()
     {
         //
+        $teachers = Teacher::all();
+        return view("teachers.index", ['teachers'=>$teachers]);
     }
 
     /**
