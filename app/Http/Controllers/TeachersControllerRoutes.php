@@ -37,10 +37,12 @@ class TeachersControllerRoutes extends Controller
      */
     public function store(Request $request)
     {
-        $teacher = new Teacher;
-        $teacher->name = $request->name;   
-        $teacher->scinces = $request->scinces;
-        $teacher->save();
+        // $teacher = new Teacher;
+        // $teacher->name = $request->name;   
+        // $teacher->scinces = $request->scinces;
+        // $teacher->save();
+        Teacher::create($request->all());
+        
         return redirect()->route('teachers.index')->with('success','');
         
     }

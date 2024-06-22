@@ -346,6 +346,27 @@ Elqouent ORM bilan ishlashda ma'lumotlarni o'qishda avval ochilga model orqali u
 # 20-dars
 Bazaga ma'lumotlarni Elqount ORM dan Model orqali qo'shish. 
 
+# 21-dars
+Mass assignment - bu metodni avvalgisidan farqi 
+```
+    $teacher = new Teacher;
+    $teacher->name = $request->name;   
+    $teacher->scinces = $request->scinces;
+    $teacher->save();
+
+    return redirect()->route('teachers.index')->with('success','');
+```
+uni yozilishidan qisqaligi bilan:
+```
+    Teacher::create($request->all());
+        
+    return redirect()->route('teachers.index')->with('success','');
+```
+Lekin bundan avval Model ichiga kerakli to'ldiriladigan maydonlarni ko'rsatib qo'yishimiz kerak.
+```
+ protected $fillable = ['name', 'scinces'];
+```
+ko'rinishida.
 
  
 
