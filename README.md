@@ -376,4 +376,15 @@ ko'rnishida beramiz. Shunda bu ustunga qiymat kiritmaydi.
 # 22-dars
 Laravel CRUD update metodi bilan ishlash.
 
+# 23-dars
+Laravel CRUD delete metodi bilan ishlashda uni biz avval form tegi ichida olishimiz kerak. Sababi shunda forma yuborialdi.
+```
+ $teacher = Teacher::findOrFail($id);
+        $teacher->delete();
+        // yokida bo'lmasa quyidagidan ham foydalanish mumkin.
+        Teacher::destroy($id);
+
+        return redirect()->route('teachers.index')->with('success','');
+```
+
 

@@ -93,6 +93,11 @@ class TeachersControllerRoutes extends Controller
      */
     public function destroy($id)
     {
-        //
+        // $teacher = Teacher::findOrFail($id);
+        // $teacher->delete();
+        // yokida bo'lmasa quyidagidan ham foydalanish mumkin.
+        Teacher::destroy($id);
+
+        return redirect()->route('teachers.index')->with('success','');
     }
 }

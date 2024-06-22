@@ -19,10 +19,14 @@
                 <th scope="row">{{$teacher->id}}</th>
                 <td>{{$teacher->name}}</td>
                 <td>{{$teacher->scinces}}</td>
-                <td>
+                <td class="d-flex justify-content-around">
                     <a href="{{route('teachers.show', $teacher->id)}}" class="btn btn-info text-white">View</a>
                     <a href="{{route('teachers.edit', $teacher->id)}}" class="btn btn-primary">Edit</a>
-                    <button type="button" class="btn btn-danger">Delete</button>
+                    <form action="{{route('teachers.destroy', $teacher->id)}}" method="POST">
+                        @csrf
+                        @method("DELETE")
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure ?')">Delete</button>
+                    </form>
                 </td>
             </tr>
         @endforeach
