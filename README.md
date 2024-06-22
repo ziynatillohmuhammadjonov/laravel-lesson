@@ -256,3 +256,74 @@ views ichida
 </div>
 ``` 
 ko'rinishida ishlatiladi.
+
+# 12-dars
+
+Laravelda databasalar bilan ishlash.
+
+Laravelda dabasalar bilan ishlashda `migrate` orqali migratsiya qilib ishlanadi. 
+- `php artisan make:migration create_tableNames_table` - orqalii jadval yasasladi. So'ng uni `database/migrations/tableNameWithHash` ichida o'zgartirib unga qiymatlar qo'shishimiz mumkin.
+- Keyin uni bazaga qo'shishimiz uchun `php artisan migrate` - buyrug'idan foydalanamiz.
+
+# 13-dars
+
+Laravel migrations Column modifires.
+Bunda biz columns ya'ni qatorlarga turli xil shartlar qo'yish uchun ishlatiladi. - https://laravel.com/docs/11.x/migrations#columns
+
+# 14-dars 
+
+Laravel migration. Artisan commands
+`php artisan migrate:status` - ummumiy statistikani olish.
+`php artisan migrate:rollback` - oxirgi migratsiya qilingan jadvalni olib tashlaydi
+`php artisan migrate:refresh` - barcha migratsiya qilingan fayllarni bekor qiladi va qayta ishga tushuradi.
+`php artisan migrate:fresh` - avval barcha migrate qilingan fayllarni o'chirib uni qayta yozadi.
+`php artisan migrate:rollback --step=3` - bunda migrate fayllarini ochilishidan oxiridan nechta step bo'lsa shuncha faylni rollback qiladi.
+
+# 15-dars
+
+Yangi column qo'shish. Agar php mavjud jadvalga yangi ustun qo'shib uni ishlatmoqchi bo'lsak u avval ro'yxatdan o'tgan bo'lsa uni o'zgartirib yozish kerak bo'lsa undagi ma'lumotlar o'chib ketadi. Buni oldina olish uchun :
+`php artisan make:migration add_phone_column_to_students_table` - ko'rinishida buyruq berib unda ochilgan faylni ichini o'zgartirib keraklicha migrate qilib yuboramiz.  
+```
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class AddPhoneColumnToStudentsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::table('students', function (Blueprint $table) {
+            //
+            $table->string('phone')->nullable();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::table('students', function (Blueprint $table) {
+            //
+            $table->dropColumn('phone');
+        });
+    }
+}
+
+```
+
+# 16-dars
+Modified column - ustunlarni nomini o'zgartirish. - https://laravel.com/docs/11.x/migrations#column-modifiers
+
+ 
+
+
